@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.obpm
+  name: obpm
+  version: 2.0.0.1
+  kind: app
+  description: |
+    Omron Blood Pressure Manager
+
+command:
+  - /opt/apps/io.github.obpm/files/bin/obpm
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/LazyT/obpm.git
+    version: master
+    commit: 877800a5c5de1c1d398a44f31a9dfaa48b4dd271
+
+build: |
+  cd /project/linglong/sources/obpm.git
+  git apply ../../../0001-install.patch
+  cp res/ico/app.png res/ico/obpm.png
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
