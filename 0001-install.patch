@@ -1,0 +1,49 @@
+From 5680b6b9dc3e85e087faa50eda83b49951e3bcb0 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Wed, 14 Aug 2024 17:35:53 +0800
+Subject: [PATCH] install
+
+---
+ obpm.desktop | 11 +++++++++++
+ obpm.pro     |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 obpm.desktop
+
+diff --git a/obpm.desktop b/obpm.desktop
+new file mode 100644
+index 0000000..1b8d924
+--- /dev/null
++++ b/obpm.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=obpm
++Name=obpm
++Name[zh_CN]=obpm
++Icon=obpm
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=obpm
++Version=2.0.0
+\ No newline at end of file
+diff --git a/obpm.pro b/obpm.pro
+index 35942c2..9bf5a28 100644
+--- a/obpm.pro
++++ b/obpm.pro
+@@ -31,3 +31,11 @@ LIBS		+= -framework IOKit -framework CoreFoundation
+ QMAKE_CXXFLAGS	+= -stdlib=libc++
+ ICON		+= res/ico/app.icns
+ }
++
++target.path = $$PREFIX/bin
++desktop.files = obpm.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = res/ico/obpm.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
